@@ -15,6 +15,17 @@ class ClientController {
         }
     }
 
+    async findAllWithOrders(req, res) {
+        
+        try {
+            
+        let result = await Client.findAllWithOrders()     
+        res.json(result)
+        } catch (error) {
+            
+        }
+    }
+
     async findById(req, res) {
         let result = undefined
         let { id } = req.params

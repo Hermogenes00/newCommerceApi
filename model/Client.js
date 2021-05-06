@@ -10,12 +10,39 @@ class Client {
         try {
             result = await knex.select('*').table('clientes')
         } catch (error) {
+            console.log(error);
             result = {
                 error
             }
         }
 
-        return jsonFormated
+        return result
+    }
+
+    async findAllWithOrders() {
+        
+        //return  ['fasdfdsf']
+        // let allJson = []
+        // let pedidos = undefined
+
+        // try {
+
+        //     let clientes = await this.findAll()
+
+        //     clientes.forEach(async clt => {
+        //         pedidos = await Order.findByClient(clt.id)
+        //         console.log('forEach')
+        //         allJson.push({
+        //             nome: clt.nome,
+        //             pedidos: pedidos
+        //         })
+        //     })
+        //     return allJson
+
+        // } catch (err) {
+        //     console.log(err);
+        // }
+
     }
 
     async findById(id) {
