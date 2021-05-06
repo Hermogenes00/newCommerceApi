@@ -1,5 +1,5 @@
 # newCommerceApi
-Api para utilização no ecommerce
+Api REST para utilização no ecommerce
 
 >Novos models/services e controllers sendo escritos
 
