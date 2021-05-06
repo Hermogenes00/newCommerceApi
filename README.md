@@ -6,5 +6,5 @@ Api para utilização no ecommerce
 
 ### Futuras Implementações
 ```
-Autenticação vian jwt.
+Autenticação via jwt.
 ```
