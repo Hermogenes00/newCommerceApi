@@ -17,33 +17,7 @@ class Client {
         }
 
         return result
-    }
-
-    async findAllWithOrders() {
-        
-        //return  ['fasdfdsf']
-        // let allJson = []
-        // let pedidos = undefined
-
-        // try {
-
-        //     let clientes = await this.findAll()
-
-        //     clientes.forEach(async clt => {
-        //         pedidos = await Order.findByClient(clt.id)
-        //         console.log('forEach')
-        //         allJson.push({
-        //             nome: clt.nome,
-        //             pedidos: pedidos
-        //         })
-        //     })
-        //     return allJson
-
-        // } catch (err) {
-        //     console.log(err);
-        // }
-
-    }
+    }    
 
     async findById(id) {
         let result = undefined
@@ -69,6 +43,32 @@ class Client {
             })
         }
         return result
+    }
+
+    async findAllWithOrders() {
+
+        let allJson = []
+        let pedidos = undefined
+
+        try {
+
+            let clients = await this.findAll()
+            let allOrders = await Order.findAll()
+
+            allJson = clients.map(clt => {
+                pedidos = allOrders.filter(order => order.clienteId == clt.id)
+                return {
+                    nome: clt.nome,
+                    pedidos: pedidos
+                }
+            })
+
+            return allJson
+
+        } catch (err) {
+            console.log(err);
+        }
+
     }
 
     async create(client) {

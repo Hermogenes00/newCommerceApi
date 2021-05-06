@@ -16,13 +16,14 @@ class ClientController {
     }
 
     async findAllWithOrders(req, res) {
-        
+
         try {
-            
-        let result = await Client.findAllWithOrders()     
-        res.json(result)
+            let result = await Client.findAllWithOrders()
+            res.status = 200
+            res.json(result)
         } catch (error) {
-            
+            res.status = 400
+            res.json({ error })
         }
     }
 
@@ -31,6 +32,7 @@ class ClientController {
         let { id } = req.params
         try {
             result = await Client.findById(id)
+            result = result.length > 0 ? result[0] : result
             res.status = 200;
         } catch (error) {
             res.status = 400

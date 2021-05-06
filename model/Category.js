@@ -1,26 +1,11 @@
 let knex = require('../database/connection')
 
-class Order {
-
-    async findById(id) {
-
-        let result = undefined
-
-        try {
-            result = await knex.select('*').where({ id: id }).table('pedidos')
-        } catch (error) {
-            result = { error }
-        }
-
-        return result
-    }
+class Category {
 
     async findAll() {
-
         let result = undefined
-
         try {
-            result = await knex.select('*').table('pedidos')
+            result = await knex.select('*').table('categorias')
         } catch (error) {
             result = { error }
         }
@@ -28,13 +13,11 @@ class Order {
         return result
     }
 
-    async create(order) {
-
-        //do work in validations
+    async findById(id) {
         let result = undefined
-
         try {
-            result = await knex.insert(order).table('pedidos')
+            result = await knex.select('*').where({ id: id }).table('categorias')
+            result = result.length > 0 ? result[0] : result
         } catch (error) {
             result = { error }
         }
@@ -42,12 +25,12 @@ class Order {
         return result
     }
 
-    async update(order) {
-
+    async create(category) {
+        //do working in the validations
         let result = undefined
 
         try {
-            result = await knex.update(order).where({ id: order.id }).table('pedidos')
+            result = await knex.insert(category).table('categorias')
         } catch (error) {
             result = { error }
         }
@@ -55,14 +38,12 @@ class Order {
         return result
     }
 
-    async delete(order) {
-
-        //do work in validations
-
+    async update(category) {
+        //do working in the validations
         let result = undefined
 
         try {
-            result = await knex.selete('*').where({ id: order.id }).delete().table('pedidos')
+            result = await knex.update(category).where({ id: category.id }).table('categorias')
         } catch (error) {
             result = { error }
         }
@@ -70,9 +51,19 @@ class Order {
         return result
     }
 
+    async delete(id) {
+        //do working in the validations
+        let result = undefined
 
+        try {
+            result = await knex.select('*').where({ id: id }).delete().table('categorias')
+        } catch (error) {
+            result = { error }
+        }
+
+        return result
+    }
 }
 
 
-
-module.exports = new Order()
+module.exports = new Category()
