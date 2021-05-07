@@ -1,7 +1,5 @@
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
-let knex = require('../database/connection')
-
 class Order {
 
     async findById(id) {
@@ -9,7 +7,7 @@ class Order {
         let result = undefined
 
         try {
-            result = await knex.select('*').where({ id: id }).table('pedidos')
+            result = await findById(id,'pedidos')
         } catch (error) {
             result = { error }
         }
@@ -22,7 +20,7 @@ class Order {
         let result = undefined
 
         try {
-            result = await knex.select('*').table('pedidos')
+            result = await findAll('pedidos')
         } catch (error) {
             result = { error }
         }
@@ -36,7 +34,7 @@ class Order {
         let result = undefined
 
         try {
-            result = await knex.insert(order).table('pedidos')
+            result = await create(order,'pedidos')
         } catch (error) {
             result = { error }
         }
@@ -49,7 +47,7 @@ class Order {
         let result = undefined
 
         try {
-            result = await knex.update(order).where({ id: order.id }).table('pedidos')
+            result = await update(order,'pedidos')
         } catch (error) {
             result = { error }
         }
@@ -57,14 +55,14 @@ class Order {
         return result
     }
 
-    async delete(order) {
+    async delete(id) {
 
         //do work in validations
 
         let result = undefined
 
         try {
-            result = await knex.selete('*').where({ id: order.id }).delete().table('pedidos')
+            result = await exclude(id,'pedidos')
         } catch (error) {
             result = { error }
         }

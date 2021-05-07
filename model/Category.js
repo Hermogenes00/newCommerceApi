@@ -5,7 +5,7 @@ class Category {
     async findAll() {
         let result = undefined
         try {
-            result = await knex.select('*').table('categorias')
+            result = await findAll('categorias')
         } catch (error) {
             result = { error }
         }
@@ -16,8 +16,7 @@ class Category {
     async findById(id) {
         let result = undefined
         try {
-            result = await knex.select('*').where({ id: id }).table('categorias')
-            result = result.length > 0 ? result[0] : result
+            result = await findById(id)
         } catch (error) {
             result = { error }
         }
@@ -30,7 +29,7 @@ class Category {
         let result = undefined
 
         try {
-            result = await knex.insert(category).table('categorias')
+            result = await create(category, 'categorias')
         } catch (error) {
             result = { error }
         }
@@ -43,7 +42,7 @@ class Category {
         let result = undefined
 
         try {
-            result = await knex.update(category).where({ id: category.id }).table('categorias')
+            result = await update(category, 'categorias')
         } catch (error) {
             result = { error }
         }
@@ -56,7 +55,7 @@ class Category {
         let result = undefined
 
         try {
-            result = await knex.select('*').where({ id: id }).delete().table('categorias')
+            result = await exclude(id)
         } catch (error) {
             result = { error }
         }

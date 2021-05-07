@@ -10,7 +10,7 @@ class Client {
         let result = undefined
 
         try {
-            result = await knex.select('*').table('clientes')
+            result = await findAll('clientes')
         } catch (error) {
             console.log(error);
             result = {
@@ -24,8 +24,7 @@ class Client {
     async findById(id) {
         let result = undefined
         try {
-            result = await knex.select('*').where({ id: id }).table('clientes')
-            result = result.length > 0 ? result[0] : []
+            result = await findById(id)          
         } catch (error) {
             return ({
                 error
@@ -77,7 +76,7 @@ class Client {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.insert(client).table('clientes')
+            result = await create(client,'clientes')
             return result
         } catch (error) {
             console.log('' + error)
@@ -89,7 +88,7 @@ class Client {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.update(client).where({ id: client.id }).table('clientes')
+            result = await update(client,'clientes')
             return result
         } catch (error) {
             console.log('' + error)
@@ -97,11 +96,11 @@ class Client {
         }
     }
 
-    async delete(client) {
+    async delete(id) {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.delete(client).where({ id: client.id }).table('clientes')
+            result = await exclude(id,'clientes')
             return result
         } catch (error) {
             console.log('' + error)

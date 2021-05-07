@@ -6,7 +6,7 @@ class User {
     async findAll() {
         let result = undefined
         try {
-            result = await knex.select('*').table('usuarios')
+            result = await findAll('usuarios')
             return result
         } catch (error) {
             console.log('' + error)
@@ -17,7 +17,7 @@ class User {
     async findById(id) {
         let result = undefined
         try {
-            result = await knex.select('*').where({ id: id }).table('usuarios')
+            result = await findById(id)
             return result
         } catch (error) {
             console.log('' + error)
@@ -40,7 +40,7 @@ class User {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.insert(user).table('usuarios')
+            result = await create(user, 'usuarios')
             return result
         } catch (error) {
             console.log('' + error)
@@ -52,7 +52,7 @@ class User {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.update(user).where({ id: user.id }).table('usuarios')
+            result = await update(user, 'usuarios')
             return result
         } catch (error) {
             console.log('' + error)
@@ -64,7 +64,7 @@ class User {
         //Work in validations
         let result = undefined
         try {
-            result = await knex.delete(user).where({ id: id }).table('usuarios')
+            result = await exclude(id, 'usuarios')
             return result
         } catch (error) {
             console.log('' + error)

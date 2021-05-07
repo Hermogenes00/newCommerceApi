@@ -1,14 +1,13 @@
-let company = require('../model/Company')
+let itemOrder = require('../model/itemOrder')
 
-class CompanyController {
+class ItemOrderController {
 
     async findAll(req, res) {
         
         let result = undefined       
 
         try {
-            result = await company.findAll()
-            result = result.length > 0 ? result[0] : result
+            result = await itemOrder.findAll()            
         } catch (error) {
             result = {
                 error
@@ -26,8 +25,7 @@ class CompanyController {
         let { id } = req.params
 
         try {
-            result = await company.findById(id)
-            result = result.length > 0 ? result[0] : result
+            result = await itemOrder.findById(id)            
         } catch (error) {
             result = {
                 error
@@ -45,7 +43,7 @@ class CompanyController {
         let { body } = req
 
         try {
-            result = await company.create(body)
+            result = await itemOrder.create(body)
         } catch (error) {
             result = {
                 error
@@ -61,7 +59,7 @@ class CompanyController {
         let { body } = req
 
         try {
-            result = await company.update(body)
+            result = await itemOrder.update(body)
         } catch (error) {
             result = {
                 error
@@ -87,4 +85,4 @@ class CompanyController {
 }
 
 
-module.exports = new CompanyController()
+module.exports = new ItemOrderController()

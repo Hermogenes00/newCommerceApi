@@ -4,12 +4,12 @@ let router = express.Router();
 const AddressController = require('../controller/AddressController');
 
 
-router.get('/address', AddressController.findAll);
-router.get('/address/:id', AddressController.findById);
+router.get('/', AddressController.findAll);
+router.get('/:id', AddressController.findById);
 
-router.post('/address', AddressController.create);
-router.put('/address', AddressController.update);
-router.delete('/address', AddressController.delete);
+router.post('/', AddressController.create);
+router.put('/', AddressController.update);
+router.delete('/:id', AddressController.delete);
 
 
 module.exports = router

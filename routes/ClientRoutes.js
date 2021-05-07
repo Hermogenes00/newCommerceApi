@@ -6,14 +6,14 @@ const ClientController = require('../controller/ClientController');
 
 
 
-router.get('/client', ClientController.findAll);
-router.get('/client/:id', ClientController.findById);
-router.get('/client/findByEmail/:email', ClientController.findByEmail);
-router.get('/client/join/findAllWithOrders/', ClientController.findAllWithOrders);
+router.get('/', ClientController.findAll);
+router.get('/:id', ClientController.findById);
+router.get('/findByEmail/:email', ClientController.findByEmail);
+router.get('/join/findAllWithOrders/', ClientController.findAllWithOrders);
 
-router.post('/client', ClientController.create);
-router.put('/client', ClientController.update);
-router.delete('/client/:id', ClientController.delete);
+router.post('/', ClientController.create);
+router.put('/', ClientController.update);
+router.delete('/:id', ClientController.delete);
 
 
 module.exports = router

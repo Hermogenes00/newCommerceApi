@@ -1,15 +1,23 @@
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
-
 let knex = require('../database/connection')
 
 class Company {
 
+
+    async findAll() {
+        let result = undefined
+        try {
+            result = await findAll('empresas')
+        } catch (error) {
+            result = { error }
+        }
+        return result
+    }
+
     async findById(id) {
         let result = undefined
         try {
-            result = await knex.select('*').where({ id: id }).table('empresas')
-            result = result.length > 0 ? result[0] : []
-
+            result = await findById(id,'empresas')
         } catch (error) {
             result = { error }
         }
@@ -21,7 +29,7 @@ class Company {
         let result = undefined
 
         try {
-            result = await knex.insert(company).table('empresas')
+            result = await create(company,'empresas')
         } catch (error) {
             result = { error }
         }
@@ -34,7 +42,7 @@ class Company {
         let result = undefined
 
         try {
-            result = await knex.update(company).where({ id: company.id }).table('empresas')
+            result = await update(company,'empresas')
         } catch (error) {
             result = { error }
         }
@@ -47,7 +55,7 @@ class Company {
         let result = undefined
 
         try {
-            result = await knex('empresas').select('*').where({ id: id }).del()
+            result = await exclude(id,'empresas')
         } catch (error) {
             result = { error }
         }
