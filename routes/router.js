@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 
+
 //Import routes
 const UserRoutes = require('./UserRoutes')
 const ClientRoutes = require('./ClientRoutes')
@@ -11,9 +12,10 @@ const CompanyRoutes = require('./CompanyRoutes')
 const PrinterRoutes = require('./PrinterRoutes')
 const ItemOrderRoutes = require('./ItemOrderRoutes')
 
-
-
-router.use('/user', UserRoutes)
+//Authentication
+const { auth } = require('../Authentication/auth')
+//Use routers
+router.use('/user', auth, UserRoutes)
 router.use('/client', ClientRoutes)
 router.use('/order', OrderRoutes)
 router.use('/category', CategoryRoutes)

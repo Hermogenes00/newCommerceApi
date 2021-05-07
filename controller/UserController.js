@@ -53,6 +53,25 @@ class UserController {
         res.json(result)
     }
 
+
+    async auth(req, res) {
+
+        let result = undefined
+
+        try {
+            result = await User.findAll()
+            res.status = 200
+        } catch (error) {
+            res.status = 400
+            console.log({
+                error
+            })
+            result = { error }
+        }
+        res.json(result)
+    }
+
+
     async create(req, res) {
 
         let result = undefined
@@ -88,7 +107,7 @@ class UserController {
     }
 
     async delete(req, res) {
-        
+
         let { id } = req.params
         let result = undefined
         try {
