@@ -1,14 +1,15 @@
 const knex = require('../database/connection')
+const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
 class Address {
 
     async findAll() {
-        
+        //to do working in the validations
         let result = undefined
-        
         try {
-            result = await knex.select('*').table('enderecos')        
-        } catch (error) {            
+            result = await findAll('enderecos')
+        } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -16,25 +17,28 @@ class Address {
     }
 
     async findById(id) {
+
+        //to do working in the validations
         let result = undefined
+
         try {
-            result = await knex.select('*').where({ id: id }).table('enderecos')
-            result = result.length > 0 ? result[0] : result
+            result = await findById(id, 'enderecos')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
+
         return result
     }
 
     async create(address) {
-
-        // do working in the validations
-
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.insert(address).table('enderecos')
+            result = await create(address, 'enderecos')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -43,13 +47,13 @@ class Address {
 
     async update(address) {
 
-        // do working in the validations
-
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.update(address).where({ id: address.id }).table('enderecos')
+            result = await update(address, 'enderecos')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -58,19 +62,18 @@ class Address {
 
     async delete(id) {
 
-        // do working in the validations
-
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.select('*').where({ id: id }).delete().table('enderecos')
+            result = await exclude(id, 'enderecos')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
     }
-
 
 }
 

@@ -7,10 +7,12 @@ class AdressController {
         //do working in the validations
 
         let result = undefined
-        
-        try {            
-            result = await address.findAll();            
-        } catch (error) {            
+
+        try {
+            result = await address.findAll();
+            console.log(result)
+        } catch (error) {
+            console.log(error)
             result = { error };
         }
 
@@ -23,10 +25,12 @@ class AdressController {
 
         let result = undefined
         let { id } = req.params
+
         try {
             result = await address.findById(id);
-            result = result.length > 0 ? result[0] : result
+            console.log(result)
         } catch (error) {
+            console.log(error)
             result = { error };
         }
 
