@@ -1,4 +1,5 @@
 let knex = require('../database/connection')
+const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
 class User {
 

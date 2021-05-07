@@ -1,6 +1,8 @@
 const knex = require('../database/connection')
 const Order = require('../model/Order')
 
+const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
+
 class Client {
 
     async findAll() {

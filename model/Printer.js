@@ -1,12 +1,15 @@
-const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
+const { findAll, findById, create, update, exclude } = require('../commom/commomModel')
 
-class Category {
+class Printer {
 
     async findAll() {
+
         let result = undefined
+
         try {
-            result = await knex.select('*').table('categorias')
+            result = await findAll('impressoras')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -15,36 +18,40 @@ class Category {
 
     async findById(id) {
         let result = undefined
+
         try {
-            result = await knex.select('*').where({ id: id }).table('categorias')
-            result = result.length > 0 ? result[0] : result
+            result = await findById(id, 'impressoras')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
     }
 
-    async create(category) {
-        //do working in the validations
+    async create(printer) {
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.insert(category).table('categorias')
+            result = await create(printer, 'impressoras')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
+
     }
 
-    async update(category) {
-        //do working in the validations
+    async update(printer) {
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.update(category).where({ id: category.id }).table('categorias')
+            result = await update(printer, 'impressoras')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -52,12 +59,13 @@ class Category {
     }
 
     async delete(id) {
-        //do working in the validations
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await knex.select('*').where({ id: id }).delete().table('categorias')
+            result = await exclude(id, 'impressoras')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -66,4 +74,4 @@ class Category {
 }
 
 
-module.exports = new Category()
+module.exports = new Printer()

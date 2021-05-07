@@ -1,3 +1,5 @@
+const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
+
 let knex = require('../database/connection')
 
 class Company {
