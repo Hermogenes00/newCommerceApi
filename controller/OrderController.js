@@ -7,8 +7,7 @@ class OrderController {
         let result = undefined
         try {
             result = await Order.findById(id)
-            res.status = 200
-            result = result.length > 0 ? result[0] : result
+            res.status = 200            
             res.json(result)
         } catch (error) {
             result = {

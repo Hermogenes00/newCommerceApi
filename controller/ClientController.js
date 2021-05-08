@@ -32,7 +32,7 @@ class ClientController {
         let { id } = req.params
         try {
             result = await Client.findById(id)
-            result = result.length > 0 ? result[0] : result
+            
             res.status = 200;
         } catch (error) {
             res.status = 400

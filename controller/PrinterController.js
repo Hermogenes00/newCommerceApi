@@ -25,8 +25,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.findById(id)
-                result = result.length > 0 ? result[0] : result
+                result = await Printer.findById(id)                
                 res.status = 200
             }
         } catch (error) {
@@ -42,8 +41,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.findByEmail(email)
-                result = result.length > 0 ? result[0] : result
+                result = await Printer.findByEmail(email)                
                 res.status = 200
             }
         } catch (error) {
@@ -59,8 +57,7 @@ class PrinterController {
         let { body } = req
 
         try {
-            result = await Printer.create(body)
-            result = result.length > 0 ? result[0] : result
+            result = await Printer.create(body)            
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -76,8 +73,7 @@ class PrinterController {
         let { body } = req
 
         try {
-            result = await Printer.update(body)
-            result = result.length > 0 ? result[0] : result
+            result = await Printer.update(body)            
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -93,8 +89,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.delete(id)
-                result = result.length > 0 ? result[0] : result
+                result = await Printer.delete(id)                
                 res.status = 200
             }
         } catch (error) {

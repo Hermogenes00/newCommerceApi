@@ -8,7 +8,7 @@ class CompanyController {
 
         try {
             result = await company.findAll()
-            result = result.length > 0 ? result[0] : result
+            
         } catch (error) {
             result = {
                 error
@@ -27,7 +27,7 @@ class CompanyController {
 
         try {
             result = await company.findById(id)
-            result = result.length > 0 ? result[0] : result
+            
         } catch (error) {
             result = {
                 error

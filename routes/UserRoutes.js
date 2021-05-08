@@ -4,13 +4,18 @@ let router = express.Router();
 //Import controller
 const UserController = require('../controller/UserController');
 
-//User routes
-router.get('/', UserController.findAll);
-router.get('/:id', UserController.findById);
-router.get('/findByEmail/:email', UserController.findByEmail);
+//Authentication
+const { auth } = require('../Authentication/auth')
 
-router.post('/', UserController.create);
-router.put('/', UserController.update);
-router.delete('/:id', UserController.delete);
+
+//User routes
+router.get('/',auth, UserController.findAll);
+router.get('/:id',auth, UserController.findById);
+router.get('/findByEmail/:email',auth, UserController.findByEmail);
+
+router.post('/', auth, UserController.create);
+router.post('/auth', UserController.auth);
+router.put('/', auth, UserController.update);
+router.delete('/:id', auth, UserController.delete);
 
 module.exports = router

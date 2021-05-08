@@ -23,8 +23,7 @@ class CategoryController {
         let result = undefined
         let { id } = req.params
         try {
-            result = await category.findById(id);
-            result = result.length > 0 ? result[0] : result
+            result = await category.findById(id);            
         } catch (error) {
             result = { error };
         }

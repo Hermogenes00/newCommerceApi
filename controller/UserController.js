@@ -26,7 +26,7 @@ class UserController {
         try {
             if (id) {
                 result = await User.findById(id)
-                result = result.length > 0 ? result[0] : result
+
                 res.status = 200
             }
         } catch (error) {
@@ -41,15 +41,13 @@ class UserController {
         let { email } = req.params
         let result = undefined
         try {
-            if (id) {
-                result = await User.findByEmail(email)
-                result = result.length > 0 ? result[0] : result
-                res.status = 200
-            }
+            result = await User.findByEmail(email)
+            res.status = 200
         } catch (error) {
             res.status = 400
             res.json({ error })
         }
+
         res.json(result)
     }
 
@@ -57,9 +55,10 @@ class UserController {
     async auth(req, res) {
 
         let result = undefined
+        let { body } = req
 
         try {
-            result = await User.findAll()
+            result = await User.auth(body)
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -68,6 +67,7 @@ class UserController {
             })
             result = { error }
         }
+
         res.json(result)
     }
 
@@ -79,7 +79,23 @@ class UserController {
 
         try {
             result = await User.create(body)
-            result = result.length > 0 ? result[0] : result
+
+            res.status = 200
+        } catch (error) {
+            res.status = 400
+            res.json({ error })
+        }
+
+        res.json(result)
+    }
+
+    async login(req, res) {
+
+        let result = undefined
+        let { body } = req
+
+        try {
+            result = await User.login(body)
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -96,7 +112,6 @@ class UserController {
 
         try {
             result = await User.update(body)
-            result = result.length > 0 ? result[0] : result
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -113,7 +128,6 @@ class UserController {
         try {
             if (id) {
                 result = await User.delete(id)
-                result = result.length > 0 ? result[0] : result
                 res.status = 200
             }
         } catch (error) {
