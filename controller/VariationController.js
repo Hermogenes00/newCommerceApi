@@ -1,16 +1,16 @@
-let address = require('../model/Address')
+let variation = require('../model/Variation')
 
-class AdressController {
+class VariationController {
 
     async findAll(req, res) {
 
-        //do working in the validation
+        //do working in the validations
 
         let result = undefined
-
         try {
-            result = await address.findAll();
+            result = await variation.findAll();
         } catch (error) {
+            console.log(error);
             result = { error };
         }
 
@@ -23,9 +23,8 @@ class AdressController {
 
         let result = undefined
         let { id } = req.params
-
         try {
-            result = await address.findById(id);
+            result = await variation.findById(id);            
         } catch (error) {
             result = { error };
         }
@@ -41,7 +40,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.create(body)
+            result = await variation.create(body)
         } catch (error) {
             result = { error };
         }
@@ -57,7 +56,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.update(body)
+            result = await variation.update(body)
         } catch (error) {
             result = { error };
         }
@@ -73,7 +72,7 @@ class AdressController {
         let { id } = req.params
 
         try {
-            result = await address.delete(id)
+            result = await variation.delete(id)
         } catch (error) {
             result = { error };
         }
@@ -82,4 +81,4 @@ class AdressController {
     }
 }
 
-module.exports = new AdressController()
+module.exports = new VariationController()

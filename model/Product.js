@@ -1,48 +1,69 @@
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
-
+const Variation = require('./Variation')
 
 class Product {
 
 
     async findAll() {
-        let result = undefined
+        let allJson = undefined
         try {
-            result = await findAll('produtos')
+            let product = await findAll('produtos')
+            let variation = await Variation.findAll()
+
+            allJson = product.map(prod => {
+                return {
+                    nome: prod.nome,
+                    variation: variation.filter(vari => vari.idProduto == prod.id)
+                }
+            })
+
         } catch (error) {
             result = { error }
         }
-        return result
+
+        return allJson
     }
 
     async findById(id) {
-        let result = undefined
+
+        let allJson = undefined
         try {
-            result = await findById(id,'produtos')
+            let product = await findById(id, 'produtos')
+            let variations = await Variation.findAll()
+
+            allJson = {
+                nome: product.nome,
+                vlrProduto: product.vlrProduto,
+                variations: variations.filter(vari => vari.idProduto == product.id)
+            }
+
+        } catch (error) {
+            console.log(error);
+            result = { error }
+        }
+
+        return allJson
+    }
+
+    async create(product) {
+
+        let result = undefined
+
+        try {
+            result = await create(product, 'produtos')
         } catch (error) {
             result = { error }
         }
-        return result
-    }
-
-    async create(company) {
-
-        let result = undefined
-
-        try {
-            result = await create(company,'produtos')
-        } catch (error) {
-            result = { error }
-        }
 
         return result
     }
 
-    async update(company) {
+    async update(product) {
 
         let result = undefined
 
         try {
-            result = await update(company,'produtos')
+            result = await update(product, 'produtos')
         } catch (error) {
             result = { error }
         }
@@ -55,11 +76,11 @@ class Product {
         let result = undefined
 
         try {
-            result = await exclude(id,'produtos')
+            result = await exclude(id, 'produtos')
         } catch (error) {
             result = { error }
         }
-        
+
         return result
     }
 }

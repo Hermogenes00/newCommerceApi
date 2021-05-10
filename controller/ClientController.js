@@ -1,24 +1,12 @@
 let Client = require('../model/Client')
 
+
 class ClientController {
 
     async findAll(req, res) {
-        let result = undefined
-        try {
-            result = await Client.findAll()
-            res.status = 200
-            res.json(result)
-        } catch (error) {
-            result = { error }
-            res.status = 400
-            res.json(result)
-        }
-    }
-
-    async findAllWithOrders(req, res) {
 
         try {
-            let result = await Client.findAllWithOrders()
+            let result = await Client.findAll()
             res.status = 200
             res.json(result)
         } catch (error) {

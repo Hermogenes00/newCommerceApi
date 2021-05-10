@@ -1,36 +1,30 @@
 const knex = require('../database/connection')
 const Order = require('../model/Order')
+let Address = require('../model/Address')
 
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
 class Client {
 
-    async findAll() {
-
-        let result = undefined
-
-        try {
-            result = await findAll('clientes')
-        } catch (error) {
-            console.log(error);
-            result = {
-                error
-            }
-        }
-
-        return result
-    }    
-
     async findById(id) {
-        let result = undefined
+        let allJson = []
+
         try {
-            result = await findById(id,'clientes')          
+            let client = await findById(id, 'clientes')
+            let address = await Address.findAll()
+            let order = await Order.findAll()            
+
+            allJson = {
+                nome: client.nome,
+                address: address.filter(adr => adr.clienteId == client.id),
+                pedidos: order.filter(order => order.clienteId == client.id),                
+            }
         } catch (error) {
-            return ({
-                error
-            })
+
+            return ({ ...error })
         }
-        return result
+
+        return allJson
     }
 
     async findByEmail(email) {
@@ -46,28 +40,29 @@ class Client {
         return result
     }
 
-    async findAllWithOrders() {
+    async findAll() {
 
         let allJson = []
-        let pedidos = undefined
 
         try {
 
-            let clients = await this.findAll()
+            let clients = await findAll('clientes')
+            let address = await Address.findAll()
             let allOrders = await Order.findAll()
 
             allJson = clients.map(clt => {
-                pedidos = allOrders.filter(order => order.clienteId == clt.id)
                 return {
                     nome: clt.nome,
-                    pedidos: pedidos
+                    pedidos: allOrders.filter(order => order.clienteId == clt.id),
+                    address: address.filter(adr => adr.clienteId == clt.id)
                 }
             })
 
             return allJson
 
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error)
+            return ({ error })
         }
 
     }
@@ -76,7 +71,7 @@ class Client {
         //Work in validations
         let result = undefined
         try {
-            result = await create(client,'clientes')
+            result = await create(client, 'clientes')
             return result
         } catch (error) {
             console.log('' + error)
@@ -88,7 +83,7 @@ class Client {
         //Work in validations
         let result = undefined
         try {
-            result = await update(client,'clientes')
+            result = await update(client, 'clientes')
             return result
         } catch (error) {
             console.log('' + error)
@@ -100,7 +95,7 @@ class Client {
         //Work in validations
         let result = undefined
         try {
-            result = await exclude(id,'clientes')
+            result = await exclude(id, 'clientes')
             return result
         } catch (error) {
             console.log('' + error)

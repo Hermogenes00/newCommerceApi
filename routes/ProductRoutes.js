@@ -3,9 +3,6 @@ let router = express.Router();
 
 const ProductController = require('../controller/ProductController');
 
-
-
-
 router.get('/', ProductController.findAll);
 router.get('/:id', ProductController.findById);
 

@@ -15,7 +15,7 @@ const InstitucionalRoutes = require('./InstitucionalRoutes')
 const PaymentRoutes = require('./PaymentRoutes')
 const ProductRoutes = require('./ProductRoutes')
 const SlideRoutes = require('./SlideRoutes')
-
+const VariationRoutes = require('./VariationRoutes')
 
 //Middleware Authentication
 const { auth } = require('../Authentication/auth')
@@ -34,6 +34,6 @@ router.use('/institucional', auth, InstitucionalRoutes)
 router.use('/payment', auth, PaymentRoutes)
 router.use('/product', auth, ProductRoutes)
 router.use('/slide', auth, SlideRoutes)
-
+router.use('/variation', auth, VariationRoutes)
 
 module.exports = router
