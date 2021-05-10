@@ -11,9 +11,7 @@ class UserController {
             res.status = 200
         } catch (error) {
             res.status = 400
-            console.log({
-                error
-            })
+           
             result = { error }
         }
         res.json(result)
@@ -62,9 +60,7 @@ class UserController {
             res.status = 200
         } catch (error) {
             res.status = 400
-            console.log({
-                error
-            })
+            
             result = { error }
         }
 
@@ -89,21 +85,7 @@ class UserController {
         res.json(result)
     }
 
-    async login(req, res) {
-
-        let result = undefined
-        let { body } = req
-
-        try {
-            result = await User.login(body)
-            res.status = 200
-        } catch (error) {
-            res.status = 400
-            res.json({ error })
-        }
-
-        res.json(result)
-    }
+    
 
     async update(req, res) {
 

@@ -1,12 +1,14 @@
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
-class Category {
+class Slide {
 
     async findAll() {
+        //to do working in the validations
         let result = undefined
         try {
-            result = await findAll('categorias')
+            result = await findAll('slides')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -14,36 +16,43 @@ class Category {
     }
 
     async findById(id) {
+
+        //to do working in the validations
         let result = undefined
+
         try {
-            result = await findById(id,'categorias')
+            result = await findById(id, 'slides')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
     }
 
-    async create(category) {
-        //do working in the validations
+    async create(address) {
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await create(category, 'categorias')
+            result = await create(address, 'slides')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
     }
 
-    async update(category) {
-        //do working in the validations
+    async update(address) {
+
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await update(category, 'categorias')
+            result = await update(address, 'slides')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
@@ -51,18 +60,21 @@ class Category {
     }
 
     async delete(id) {
-        //do working in the validations
+
+        //to do working in the validations
         let result = undefined
 
         try {
-            result = await exclude(id,'categorias')
+            result = await exclude(id, 'slides')
         } catch (error) {
+            console.log(error);
             result = { error }
         }
 
         return result
     }
+
 }
 
 
-module.exports = new Category()
+module.exports = new Slide()

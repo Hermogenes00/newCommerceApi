@@ -11,9 +11,14 @@ const AddressRoutes = require('./AddressRoutes')
 const CompanyRoutes = require('./CompanyRoutes')
 const PrinterRoutes = require('./PrinterRoutes')
 const ItemOrderRoutes = require('./ItemOrderRoutes')
+const InstitucionalRoutes = require('./InstitucionalRoutes')
+const PaymentRoutes = require('./PaymentRoutes')
+const ProductRoutes = require('./ProductRoutes')
+const SlideRoutes = require('./SlideRoutes')
+
 
 //Middleware Authentication
-const {auth} = require('../Authentication/auth')
+const { auth } = require('../Authentication/auth')
 
 
 //Use routers
@@ -25,5 +30,10 @@ router.use('/address', auth, AddressRoutes)
 router.use('/company', auth, CompanyRoutes)
 router.use('/printer', auth, PrinterRoutes)
 router.use('/itemorder', auth, ItemOrderRoutes)
+router.use('/institucional', auth, InstitucionalRoutes)
+router.use('/payment', auth, PaymentRoutes)
+router.use('/product', auth, ProductRoutes)
+router.use('/slide', auth, SlideRoutes)
+
 
 module.exports = router

@@ -1,6 +1,6 @@
-let address = require('../model/Address')
+let slide = require('../model/Slide')
 
-class AdressController {
+class SlideController {
 
     async findAll(req, res) {
 
@@ -9,8 +9,10 @@ class AdressController {
         let result = undefined
 
         try {
-            result = await address.findAll();
+            result = await slide.findAll();
+            console.log(result)
         } catch (error) {
+            console.log(error)
             result = { error };
         }
 
@@ -25,8 +27,10 @@ class AdressController {
         let { id } = req.params
 
         try {
-            result = await address.findById(id);
+            result = await slide.findById(id);
+            console.log(result)
         } catch (error) {
+            console.log(error)
             result = { error };
         }
 
@@ -41,7 +45,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.create(body)
+            result = await slide.create(body)
         } catch (error) {
             result = { error };
         }
@@ -57,7 +61,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.update(body)
+            result = await slide.update(body)
         } catch (error) {
             result = { error };
         }
@@ -73,7 +77,7 @@ class AdressController {
         let { id } = req.params
 
         try {
-            result = await address.delete(id)
+            result = await slide.delete(id)
         } catch (error) {
             result = { error };
         }
@@ -82,4 +86,4 @@ class AdressController {
     }
 }
 
-module.exports = new AdressController()
+module.exports = new SlideController()

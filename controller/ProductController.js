@@ -1,13 +1,13 @@
-const Printer = require('../model/Printer')
+const Product = require('../model/Product')
 
-class PrinterController {
+class ProductController {
 
     async findAll(req, res) {
 
         let result = undefined
 
         try {
-            result = await Printer.findAll()
+            result = await Product.findAll()
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -23,7 +23,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.findById(id)                
+                result = await Product.findById(id)                
                 res.status = 200
             }
         } catch (error) {
@@ -39,7 +39,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.findByEmail(email)                
+                result = await Product.findByEmail(email)                
                 res.status = 200
             }
         } catch (error) {
@@ -55,7 +55,7 @@ class PrinterController {
         let { body } = req
 
         try {
-            result = await Printer.create(body)            
+            result = await Product.create(body)            
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -71,7 +71,7 @@ class PrinterController {
         let { body } = req
 
         try {
-            result = await Printer.update(body)            
+            result = await Product.update(body)            
             res.status = 200
         } catch (error) {
             res.status = 400
@@ -87,7 +87,7 @@ class PrinterController {
         let result = undefined
         try {
             if (id) {
-                result = await Printer.delete(id)                
+                result = await Product.delete(id)                
                 res.status = 200
             }
         } catch (error) {
@@ -101,4 +101,4 @@ class PrinterController {
 }
 
 
-module.exports = new PrinterController()
+module.exports = new ProductController()

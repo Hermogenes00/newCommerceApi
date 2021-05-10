@@ -1,6 +1,6 @@
-let address = require('../model/Address')
+let payment = require('../model/Payment')
 
-class AdressController {
+class PaymentController {
 
     async findAll(req, res) {
 
@@ -9,8 +9,10 @@ class AdressController {
         let result = undefined
 
         try {
-            result = await address.findAll();
+            result = await payment.findAll();
+            console.log(result)
         } catch (error) {
+            console.log(error)
             result = { error };
         }
 
@@ -25,8 +27,10 @@ class AdressController {
         let { id } = req.params
 
         try {
-            result = await address.findById(id);
+            result = await payment.findById(id);
+            console.log(result)
         } catch (error) {
+            console.log(error)
             result = { error };
         }
 
@@ -41,7 +45,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.create(body)
+            result = await payment.create(body)
         } catch (error) {
             result = { error };
         }
@@ -57,7 +61,7 @@ class AdressController {
         let { body } = req
 
         try {
-            result = await address.update(body)
+            result = await payment.update(body)
         } catch (error) {
             result = { error };
         }
@@ -73,7 +77,7 @@ class AdressController {
         let { id } = req.params
 
         try {
-            result = await address.delete(id)
+            result = await payment.delete(id)
         } catch (error) {
             result = { error };
         }
@@ -82,4 +86,4 @@ class AdressController {
     }
 }
 
-module.exports = new AdressController()
+module.exports = new PaymentController()

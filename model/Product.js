@@ -1,22 +1,35 @@
 const { findById, create, update, exclude, findAll } = require('../commom/commomModel')
 
-class Category {
+
+class Product {
+
 
     async findAll() {
         let result = undefined
         try {
-            result = await findAll('categorias')
+            result = await findAll('produtos')
         } catch (error) {
             result = { error }
         }
-
         return result
     }
 
     async findById(id) {
         let result = undefined
         try {
-            result = await findById(id,'categorias')
+            result = await findById(id,'produtos')
+        } catch (error) {
+            result = { error }
+        }
+        return result
+    }
+
+    async create(company) {
+
+        let result = undefined
+
+        try {
+            result = await create(company,'produtos')
         } catch (error) {
             result = { error }
         }
@@ -24,25 +37,12 @@ class Category {
         return result
     }
 
-    async create(category) {
-        //do working in the validations
+    async update(company) {
+
         let result = undefined
 
         try {
-            result = await create(category, 'categorias')
-        } catch (error) {
-            result = { error }
-        }
-
-        return result
-    }
-
-    async update(category) {
-        //do working in the validations
-        let result = undefined
-
-        try {
-            result = await update(category, 'categorias')
+            result = await update(company,'produtos')
         } catch (error) {
             result = { error }
         }
@@ -51,18 +51,19 @@ class Category {
     }
 
     async delete(id) {
-        //do working in the validations
+
         let result = undefined
 
         try {
-            result = await exclude(id,'categorias')
+            result = await exclude(id,'produtos')
         } catch (error) {
             result = { error }
         }
-
+        
         return result
     }
 }
 
 
-module.exports = new Category()
+
+module.exports = new Product()

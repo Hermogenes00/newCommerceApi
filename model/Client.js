@@ -24,7 +24,7 @@ class Client {
     async findById(id) {
         let result = undefined
         try {
-            result = await findById(id)          
+            result = await findById(id,'clientes')          
         } catch (error) {
             return ({
                 error
