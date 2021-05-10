@@ -16,6 +16,9 @@ const PaymentRoutes = require('./PaymentRoutes')
 const ProductRoutes = require('./ProductRoutes')
 const SlideRoutes = require('./SlideRoutes')
 const VariationRoutes = require('./VariationRoutes')
+const SubCategoryRoutes = require('./SubCategoryRoutes')
+const SupplierRoutes = require('./SupplierRoutes')
+
 
 //Middleware Authentication
 const { auth } = require('../Authentication/auth')
@@ -35,5 +38,8 @@ router.use('/payment', auth, PaymentRoutes)
 router.use('/product', auth, ProductRoutes)
 router.use('/slide', auth, SlideRoutes)
 router.use('/variation', auth, VariationRoutes)
+router.use('/subcategory', auth, SubCategoryRoutes)
+router.use('/supplier', auth, SupplierRoutes)
+
 
 module.exports = router
