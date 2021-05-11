@@ -44,6 +44,16 @@ Código | Descrição
 
 >Novos models/services e controllers sendo escritos
 
+## Autenticação
 
+Nossa api trabalha com autenticação no formato JWT.
+
+O token pode ser obtido através do endpoint POST /user/auth
+
+Dados para envio no POST
+Campo | Descrição
+----- | ---------
+email | Email previamente cadastrado no sistema.
+passowrd| Password previamente vinculado ao email.
 
 >Authenticação via JWT
