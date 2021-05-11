@@ -69,4 +69,5 @@ passowrd| Password previamente vinculado ao email.
 }
  ~~~
  
->Authenticação via JWT
+Para consumir qualquer endpoint, exceto Post /user/auth, é obrigatório informar o token obtido no headers
+>  Authorization: Bearer [access_token]
