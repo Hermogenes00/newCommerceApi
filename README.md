@@ -33,14 +33,14 @@ DELETE | Utilizado para realizar a deleção de um registro.
 
 Código | Descrição
 ---- | ----------
-200 | Retorna informações de um ou mais registros.
-400 | Utilizado para criar um novo registro.
-401 | Utilizado para realizar a alteração de um registro.
-404 | Utilizado para realizar a deleção de um registro.
-405 | Utilizado para realizar a deleção de um registro.
-410 | Utilizado para realizar a deleção de um registro.
-422 | Utilizado para realizar a deleção de um registro.
-429 | Utilizado para realizar a deleção de um registro.
+200 | Requisição executada com sucesso (success).
+400 | Erros de validação ou os campos informados não existem no sistema.
+401 | Dados de acesso inválidos.
+404 | Registro pesquisado não encontrado (Not found).
+405 | Método não implementado.
+410 | Registro pesquisado foi apagado do sistema e não esta mais disponível.
+422 | Dados informados estão fora do escopo definido para o campo.
+429 | Número máximo de requisições atingido. (aguarde alguns segundos e tente novamente)
 
 >Novos models/services e controllers sendo escritos
 
