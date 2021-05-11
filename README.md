@@ -1,6 +1,6 @@
 # newCommerceApi
 
-Api REST para utilização no ecommerce
+O projeto #####newCommerceApi disponibiliza
 
 >Novos models/services e controllers sendo escritos
 
