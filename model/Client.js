@@ -15,7 +15,7 @@ class Client {
             let order = await Order.findAll()            
 
             allJson = {
-                nome: client.nome,
+                ...client,
                 address: address.filter(adr => adr.clienteId == client.id),
                 pedidos: order.filter(order => order.clienteId == client.id),                
             }

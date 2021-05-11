@@ -12,7 +12,7 @@ class Product {
 
             allJson = product.map(prod => {
                 return {
-                    nome: prod.nome,
+                    ...prod,
                     variation: variation.filter(vari => vari.idProduto == prod.id)
                 }
             })
@@ -32,8 +32,7 @@ class Product {
             let variations = await Variation.findAll()
 
             allJson = {
-                nome: product.nome,
-                vlrProduto: product.vlrProduto,
+                ...product,                           
                 variations: variations.filter(vari => vari.idProduto == product.id)
             }
 
