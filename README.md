@@ -25,7 +25,6 @@ GET | Retorna informações de um ou mais registros.
 POST | Utilizado para criar um novo registro.
 PUT | Utilizado para realizar a alteração de um registro.
 DELETE | Utilizado para realizar a deleção de um registro.
->Novos models/services e controllers sendo escritos
 
 
 ## Status de respostas
