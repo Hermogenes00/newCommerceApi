@@ -60,7 +60,9 @@ passowrd| Password previamente vinculado ao email.
  >Exemplo de resposta
  ~~~javascript
  {
-    "token": "eyJhbGciOiJIUzIaaa1NiIsInR5cfadfadsfadfaCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsIm5vbWUiOiJIZXJtw7NnZW5lc3MgTmV0byIsImlhdCI6MTYyMDczODc3MSwiZXhwIjoxNjUyMjc0NzcxfQ.jhYyc8ux30EmWNoDmgWEP4XvNRb0aTPNnu0RfadsfaTQbscb4",
+    "token": "eyJhbGciOiJIUzIaaa1NiIsInR5cfadfadsfadfaCI6IkpXVCJ9.
+    eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsIm5vbWUiOiJIZXJtw7NnZW5lc3MgTmV0byIsImlhdCI6MTYyMDczODc3MSwiZXhwIjoxNjUyMjc0NzcxfQ.
+    jhYyc8ux30EmWNoDmgWEP4XvNRb0aTPNnu0RfadsfaTQbscb4",
     "data": {
         "email": "admin@email.com",
         "nome": "Hermógeness Neto"
