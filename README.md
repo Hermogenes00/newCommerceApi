@@ -70,4 +70,30 @@ passowrd| Password previamente vinculado ao email.
  ~~~
  
 Para consumir qualquer endpoint, exceto Post /user/auth, é obrigatório informar o token obtido no headers
->  Authorization: Bearer [access_token]
+>  Exemplo de requisição utilizando o Axios
+~~~javascript
+
+var axios = require('axios');
+var data = JSON.stringify({
+  "email": "admin@exemplo.com",
+  "password": "seupassword"
+});
+
+var config = {
+  method: 'post',
+  url: 'http://ecommerce.api/user/auth',
+  headers: { 
+    'Authorization': 'Bearer eyJhbGciOiJIaUzI1NiIsInR5cfadfCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsIm5vbWUiOiJIZXJtw7NnZW5lc3MgTmV0byIsImlhdCI6MTYyMDY0NzE0MSwiZXhwIjoxNjUyMTgzMTQxfQ.e40b7FIXYjegnEalm_7eQMRjhZdFw7kKktTRiVYaVffaa4M', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+~~~
