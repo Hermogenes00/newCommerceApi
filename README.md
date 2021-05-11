@@ -70,20 +70,19 @@ passowrd| Password previamente vinculado ao email.
  ~~~
  
 Para consumir qualquer endpoint, exceto Post /user/auth, é obrigatório informar o token obtido no headers
->  Exemplo de requisição utilizando o Axios
+>  Exemplo de requisição GET no endpoint /product
 ~~~javascript
-
 var axios = require('axios');
 var data = JSON.stringify({
-  "email": "admin@exemplo.com",
-  "password": "seupassword"
+  "email": "admin@email.com",
+  "password": "123"
 });
 
 var config = {
-  method: 'post',
-  url: 'http://ecommerce.api/user/auth',
-  headers: { 
-    'Authorization': 'Bearer eyJhbGciOiJIaUzI1NiIsInR5cfadfCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsIm5vbWUiOiJIZXJtw7NnZW5lc3MgTmV0byIsImlhdCI6MTYyMDY0NzE0MSwiZXhwIjoxNjUyMTgzMTQxfQ.e40b7FIXYjegnEalm_7eQMRjhZdFw7kKktTRiVYaVffaa4M', 
+  method: 'get',
+  url: 'http://ecommerce.api/product',
+  headers: {     
+    'Authorization': 'Bearer eyJhbGciaaaOiJIUzI1NiIaaaasInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsIm5vbWUiOiJIZXJtw7NnZW5lc3MgTmV0byIsImlhdCI6MTYyMDY0NzE0MSwiZXhwIjoxNjUyMTgzMTQxfQ.e40b7FIXYjegnEalm_7eQMRajhZdFw7kKktTRiVYafadfV4M', 
     'Content-Type': 'application/json'
   },
   data : data
