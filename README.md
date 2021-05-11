@@ -17,6 +17,7 @@ O projeto <b>newCommerceApi</b> disponibiliza uma api REST, que permite o acesso
 * User
 * Variation
 
+## Métodos
 >Novos models/services e controllers sendo escritos
 
 >Authenticação via JWT
