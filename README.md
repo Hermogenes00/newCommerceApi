@@ -41,7 +41,7 @@ Código | Descrição
 422 | Dados informados estão fora do escopo definido para o campo.
 429 | Número máximo de requisições atingido. (aguarde alguns segundos e tente novamente)
 
->Novos models/services e controllers sendo escritos
+
 
 ## Autenticação
 
