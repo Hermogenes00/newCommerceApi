@@ -50,7 +50,8 @@ Nossa api trabalha com autenticação no formato JWT.
 
 O token pode ser obtido através do endpoint POST /user/auth
 
-Dados para envio no POST
+Dados para envio no body do POST
+
 Campo | Descrição
 ----- | ---------
 email | Email previamente cadastrado no sistema.
