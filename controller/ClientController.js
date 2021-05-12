@@ -20,7 +20,7 @@ class ClientController {
         let { id } = req.params
         try {
             result = await Client.findById(id)
-            
+
             res.status = 200;
         } catch (error) {
             res.status = 400
@@ -30,6 +30,7 @@ class ClientController {
         }
         res.json(result)
     }
+
 
     async findByEmail(req, res) {
         let result = undefined
@@ -45,6 +46,25 @@ class ClientController {
         }
         res.json(result)
     }
+
+    async auth(req, res) {
+
+        let result = undefined
+        let { body } = req
+
+        try {
+            result = await Client.auth(body)
+            res.status = 200
+        } catch (error) {
+            res.status = 400
+
+            result = { error }
+        }
+
+        res.json(result)
+    }
+
+
 
     async create(req, res) {
         let result = undefined

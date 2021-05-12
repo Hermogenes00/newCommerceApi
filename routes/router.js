@@ -26,7 +26,7 @@ const { auth } = require('../Authentication/auth')
 
 //Use routers
 router.use('/user', UserRoutes)
-router.use('/client', auth, ClientRoutes)
+router.use('/client', ClientRoutes)
 router.use('/order', auth, OrderRoutes)
 router.use('/category', auth, CategoryRoutes)
 router.use('/address', auth, AddressRoutes)

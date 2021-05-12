@@ -13,8 +13,8 @@ router.get('/',auth, UserController.findAll);
 router.get('/:id',auth, UserController.findById);
 router.get('/findByEmail/:email',auth, UserController.findByEmail);
 
-router.post('/', auth, UserController.create);
 router.post('/auth', UserController.auth);
+router.post('/', auth, UserController.create);
 router.put('/', auth, UserController.update);
 router.delete('/:id', auth, UserController.delete);
 

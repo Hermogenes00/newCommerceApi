@@ -4,15 +4,19 @@ let router = express.Router();
 const ClientController = require('../controller/ClientController');
 
 
+//Authentication
+const { auth } = require('../Authentication/auth')
 
 
-router.get('/', ClientController.findAll);
-router.get('/:id', ClientController.findById);
-router.get('/findByEmail/:email', ClientController.findByEmail);
 
-router.post('/', ClientController.create);
-router.put('/', ClientController.update);
-router.delete('/:id', ClientController.delete);
+router.get('/', auth, ClientController.findAll);
+router.get('/:id', auth, ClientController.findById);
+router.get('/findByEmail/:email', auth, ClientController.findByEmail);
+
+router.post('/auth', ClientController.auth);
+router.post('/', auth, ClientController.create);
+router.put('/', auth, ClientController.update);
+router.delete('/:id', auth, ClientController.delete);
 
 
 module.exports = router

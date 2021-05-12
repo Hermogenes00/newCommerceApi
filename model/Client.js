@@ -12,12 +12,12 @@ class Client {
         try {
             let client = await findById(id, 'clientes')
             let address = await Address.findAll()
-            let order = await Order.findAll()            
+            let order = await Order.findAll()
 
             allJson = {
                 ...client,
                 address: address.filter(adr => adr.clienteId == client.id),
-                pedidos: order.filter(order => order.clienteId == client.id),                
+                pedidos: order.filter(order => order.clienteId == client.id),
             }
         } catch (error) {
 
@@ -26,6 +26,12 @@ class Client {
 
         return allJson
     }
+
+
+
+
+
+
 
     async findByEmail(email) {
         let result = undefined
@@ -39,6 +45,48 @@ class Client {
         }
         return result
     }
+
+
+    async auth({ email, password }) {
+
+
+        let result = undefined
+
+        try {
+            let objClient = await this.findByEmail(email)
+
+            if (objClient) {
+
+                let resultCompare = await bcrypt.compare(password, objClient.password)
+
+                if (resultCompare) {
+
+                    let token = jwt.sign({
+                        email: objClient.email,
+                        nome: objClient.nome,
+                        rule: "CLIENT"
+                    }, SECRET, { expiresIn: ONE_YEAR })
+
+                    result = {
+                        token,
+                        data: {
+                            email: objClient.email,
+                            nome: objClient.nome
+                        }
+                    }
+                }
+            }
+
+        } catch (error) {
+            result = error
+        }
+
+        return result
+    }
+
+
+
+
 
     async findAll() {
 

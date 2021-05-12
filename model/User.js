@@ -42,7 +42,8 @@ class User {
 
                     let token = jwt.sign({
                         email: objClient.email,
-                        nome: objClient.nome
+                        nome: objClient.nome,
+                        rule:'COLLABORATOR'
                     }, SECRET, { expiresIn: ONE_YEAR })
 
                     result = {
